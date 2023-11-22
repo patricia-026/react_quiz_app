@@ -19,11 +19,8 @@ export default function Answers({
         const isSelected = selectedAnswer === answer;
         let cssClass = "";
 
-        console.log("answer::: " + answer);
-
         if (answerState === "answered" && isSelected) {
           cssClass = "selected";
-          console.log("answerstate: SELECTED");
         }
 
         if (
@@ -31,12 +28,15 @@ export default function Answers({
           isSelected
         ) {
           cssClass = answerState;
-          console.log("answerstate: " + answerState);
         }
 
         return (
           <li key={answer} className="answer">
-            <button onClick={() => onSelect(answer)} className={cssClass}>
+            <button
+              onClick={() => onSelect(answer)}
+              className={cssClass}
+              disabled={answerState !== ""}
+            >
               {answer}
             </button>
           </li>
